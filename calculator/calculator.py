@@ -1,4 +1,5 @@
 from tkinter import *
+from typing import Match
 
 root = Tk()
 root.title("Simple Calculator")
@@ -18,14 +19,49 @@ def button_clear():
 def button_add():
     first_number = e.get()
     global f_num
+    global math
+    math = "add"
     f_num = int(first_number)
     e.delete(0,END)
 
 def button_equal():
     second_number = e.get()
     e.delete(0,END)
-    e.insert(0, f_num + int(second_number))
 
+    if math == "add":
+        e.insert(0, f_num + int(second_number))
+    elif math == "sub":
+        e.insert(0, f_num - int(second_number))
+    elif math == "mul":
+        e.insert(0, f_num * int(second_number))
+    elif math == "div":
+        if int(second_number) !=0:
+            e.insert(0, f_num / int(second_number))
+        else:
+            raise ZeroDivisionError("Do not divide by 0")
+def button_subtract():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "sub"
+    f_num = int(first_number)
+    e.delete(0,END)
+
+def button_multiply():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "mul"
+    f_num = int(first_number)
+    e.delete(0,END)
+
+def button_divide():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "div"
+    f_num = int(first_number)
+    e.delete(0,END)
 
 #Number Buttons
 
@@ -48,10 +84,10 @@ Button_Clear = Button(root, text="C", padx=39, pady=20, command=button_clear).gr
 Button_Equal = Button(root, text="=", padx=40, pady=20, command=button_equal).grid(row=4, column=1)
 
 Button_Add = Button(root, text="+", padx=40, pady=20, command=button_add).grid(row=1, column=4)
-Button_Subtract = Button(root, text="-", padx=39, pady=20).grid(row=2, column=4)
+Button_Subtract = Button(root, text="-", padx=39, pady=20, command=button_subtract).grid(row=2, column=4)
 
-Button_Multiply = Button(root, text="*", padx=40, pady=20).grid(row=3, column=4)
-Button_Divide = Button(root, text="/", padx=40, pady=20).grid(row=4, column=4)
+Button_Multiply = Button(root, text="*", padx=40, pady=20, command=button_multiply).grid(row=3, column=4)
+Button_Divide = Button(root, text="/", padx=40, pady=20, command=button_divide).grid(row=4, column=4)
 
 
 root.mainloop()
