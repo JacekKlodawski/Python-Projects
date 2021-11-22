@@ -39,6 +39,8 @@ def button_equal():
             e.insert(0, f_num / int(second_number))
         else:
             raise ZeroDivisionError("Do not divide by 0")
+
+            
 def button_subtract():
     first_number = e.get()
     global f_num
