@@ -4,5 +4,4 @@ root = Tk()
 root.title('Title')
 
 
-
 root.mainloop()
