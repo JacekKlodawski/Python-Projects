@@ -17,6 +17,7 @@ c.execute("""CREATE TABLE clubs (
     value float,
     year integer)""")
 
+
 def submit():
     conn = sqlite3.connect('clubs_list.db')
     c = conn.cursor()
